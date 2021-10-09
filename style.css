@@ -7,6 +7,21 @@
 body {
     
 }
+.start-stop {
+
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+}
+.start-stop button {
+
+    margin: 20px;
+    padding: 10px 20px;
+}
+.stop {
+
+    display: none;
+}
 .mole {
 
     z-index: 0;
@@ -15,7 +30,7 @@ body {
     bottom: -20%;
     transform: translateX(-50%);
     animation: appear 0.5s linear;
-    pointer-events: none;
+    /*pointer-events: none;*/
 }
 .hole {
     height: 140px;
