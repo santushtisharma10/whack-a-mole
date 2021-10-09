@@ -1,11 +1,14 @@
 const startBtn = document.querySelector(".play")
 const stopBtn = document.querySelector(".stop")
-const hole = document.querySelector(".holes")
+const holes = document.querySelector(".holes").children
 const cursor = document.querySelector(".hammer-cursor img")
 const score = document.querySelector(".score")
+const reset = document.querySelector(".reset")
 
-console.log(startBtn, hole)
-let prev = -1
+let hole;
+let ans = 0
+
+
 
 window.addEventListener("mousemove", (e) => {
 
@@ -18,35 +21,49 @@ window.addEventListener("click", () => {
     cursor.style.animation = "hit 0.2s ease"
 
     setTimeout(() => cursor.style.removeProperty("animation"), 1000)
+
+
+
 })
-let num = 0
+
+reset.addEventListener("click", () =>{
+
+    location.reload()
+   
+} )
+
 startBtn.addEventListener("click", () => {
 
     startBtn.style.display = "none"
     stopBtn.style.display = "inline-block"
-    
+
     const startGame = setInterval(() => {
 
         const index = Math.floor(Math.random() * 9)
 
-        if (prev != index) {
+        hole = holes[index];
 
-            const image = document.createElement("img")
-            image.src = "images/mole.png"
-            image.setAttribute("class", "mole")
+        const image = document.createElement("img")
+        image.src = "images/mole.png"
+        image.setAttribute("class", "mole")
 
-            hole.children[index].appendChild(image)
-            setTimeout(() => {
+        hole.appendChild(image)
+        setTimeout(() => {
 
-                hole.children[index].removeChild(image)
-            }, 800)
-        }
-        prev = index;
-        console.log(hole.children[index])
+            hole.removeChild(image)
+        }, 800)
 
     }, 1000)
 
-    stopBtn.addEventListener("click",  ()=> {
+    window.addEventListener("click", (e) => {
+
+        if (e.target == hole) {
+
+            score.innerHTML = ++ans
+        }
+    })
+
+    stopBtn.addEventListener("click", () => {
 
         startBtn.style.display = "inline-block"
         stopBtn.style.display = "none"
