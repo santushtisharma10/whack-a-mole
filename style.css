@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 body {
-    
+
 }
 .start-stop {
 
@@ -24,18 +24,18 @@ body {
 }
 .mole {
 
-    z-index: 0;
+    z-index: 1;
     position: absolute;
+
     left: 50%;
-    bottom: -20%;
+    bottom: -30%;
     transform: translateX(-50%);
     animation: appear 0.5s linear;
-    /*pointer-events: none;*/
+    pointer-events: none;
 }
 .hole {
     height: 140px;
     width: 200px;
-    z-index: 1;
     position: relative;
     padding: 5px;
     background-image: url("images/mole-hole-2.jpg");
@@ -51,6 +51,6 @@ body {
     }
     to {
 
-        bottom: -20%;
+        bottom: -30%;
     }
 }
