@@ -1,24 +1,34 @@
 const startBtn = document.querySelector(".play")
 const stopBtn = document.querySelector(".stop")
 const hole = document.querySelector(".holes")
-const score;
-const cur;
+const cursor = document.querySelector(".hammer-cursor img")
 
 console.log(startBtn, hole)
+let prev = -1
 
-stopBtn.addEventListener("click", ()=> {
+window.addEventListener("mousemove", (e)=>{
 
+    cursor.style.top = e.pageY + "px"
+    cursor.style.left = e.pageX + "px"
+
+   
     
 })
+window.addEventListener("click", ()=> {
 
-startBtn.addEventListener("click", setInterval(()=>{
+    cursor.style.animation = "hit 0.2s ease"
 
+    setTimeout( () => cursor.style.removeProperty("animation"), 1000)
+})
 
-    const arr = [0,1,2, 3, 4, 5, 6, 7, 8]
-    const index = 4// store index using random function
-    console.log(hole.children[index])
+startBtn.addEventListener("click", () =>{ setInterval(()=>{
 
-    const image = document.createElement("img")
+    const index = Math.floor(Math.random()*9)
+    
+    // store index using random function
+    if(prev != index) {
+
+        const image = document.createElement("img")
     image.src = "images/mole.png"
     image.setAttribute("class", "mole")
     
@@ -26,6 +36,9 @@ startBtn.addEventListener("click", setInterval(()=>{
     setTimeout(()=> {
 
         hole.children[index].removeChild(image)
-    }, 900)
+    }, 800)
+    }
+    prev = index;
+    console.log(hole.children[index])
     
-}, 1000))
+}, 1000)})

@@ -3,9 +3,21 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    cursor: none;
 }
 body {
 
+    position: relative;
+}
+
+.hammer-cursor img {
+
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 3;
+    transform: translate(-10px, -30px);
+    pointer-events: none;
 }
 .center {
 
@@ -30,7 +42,7 @@ button {
     left: 50%;
     bottom: -30%;
     transform: translateX(-50%);
-    animation: appear 0.5s linear;
+    animation: appear 0.3s linear;
     pointer-events: none;
 }
 .hole {
@@ -52,5 +64,16 @@ button {
     to {
 
         bottom: -30%;
+    }
+}
+@keyframes hit {
+    
+    from {
+
+        transform: rotate(0deg);
+    }
+    to {
+
+        transform: rotate(30deg);
     }
 }
