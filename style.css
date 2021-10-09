@@ -7,13 +7,13 @@
 body {
 
 }
-.start-stop {
+.center {
 
-    margin: 30px;
     display: flex;
-    justify-content: center;
+  justify-content: center;
+  align-items: center;
 }
-.start-stop button {
+button {
 
     margin: 20px;
     padding: 10px 20px;
